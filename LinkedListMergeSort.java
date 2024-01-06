@@ -5,12 +5,12 @@ public class Solution {
     }
     public static ListNode mergeSort(ListNode A){
         if(A==null||A.next==null) return A;
-        ListNode intersection = center(A);
-        ListNode h2 = intersection.next;
-        intersection.next=null;
-        A=mergeSort(A);
-        h2=mergeSort(h2);
-        return merge(A,h2);
+        ListNode intersection = center(A); //dividing linkelist into half
+        ListNode h2 = intersection.next; //once divide we have add another half of linkedlist into h2
+        intersection.next=null;  //onece second half added in h2 we have to cut first half by giving null to the center of the next
+        A=mergeSort(A);  //A will be keep divided upto A==null and it will sort the first half and keep store into the A
+        h2=mergeSort(h2); //h2 doing the same process like the above one doing
+        return merge(A,h2); //after all divided it will merge the A and h2
     }
 
     public static ListNode center(ListNode A){
